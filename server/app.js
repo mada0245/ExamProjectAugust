@@ -2,13 +2,15 @@
 import express from 'express';
 
 const app = express();
+import config from 'config';
+import helmet from 'helmet';
+import http from 'http';
+
+import token from './routes/token.js';
 import signUp from './routes/signUp.js';
 import login from './routes/login.js';
 import forgotPassword from './routes/forgotPassword.js';
-import config from 'config';
-import token from './routes/token.js';
-import helmet from 'helmet';
-import http from 'http';
+import checkAuth from './routes/checkAuth.js'
 /* import socketIO from 'socket.io'; */
 
 
@@ -73,6 +75,7 @@ app.use('/api/signup', signUp);
 app.use('/api/login', login);
 app.use('/api/forgotPassword', forgotPassword);
 app.use('/api/token', token);
+app.use('/api/checkAuth', checkAuth);
 
 
 

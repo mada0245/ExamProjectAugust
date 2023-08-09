@@ -1,9 +1,9 @@
  <script>
-    import { onMount } from 'svelte';
+    import { beforeUpdate } from 'svelte';
     import { BASE_URL } from '../stores/globalStores'
     import LoginIntoWebsite from '../components/loginIntoWebsite.svelte';
 
-    onMount(async () => {
+    beforeUpdate(async () => {
         const registerURL = `${$BASE_URL}/api/token/delete`;
   
         const response = await fetch(registerURL, {
