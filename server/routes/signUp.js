@@ -12,7 +12,7 @@ router.use(cors());
 
 //this is the router, note that we have a middleware function here that will run before the router
 //if the middleware function doesnt block the access we can progress
-router.post('/', auth, async (req, res) => {
+router.post('/api/signup', auth, async (req, res) => {
   //verifying clinet request
   if (!req.body.name || !req.body.email || !req.body.password || Object.keys(req.body).length > 3) {
     res.status(400).send('Invalid input');

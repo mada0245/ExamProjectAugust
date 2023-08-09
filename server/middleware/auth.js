@@ -8,7 +8,6 @@ function auth(req, res, next) {
     //if the header exists we verify if it is correct here
     try{
         const decoded = jwt.verify(token, config.get('jwtPrivateKey'));
-        console.log(decoded);
         if (decoded == "ADMIN"){
             next();
         }else{

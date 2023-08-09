@@ -10,7 +10,7 @@ router.use(express.json());
 router.use(cors());
 
 //router
-router.post('/', async (req, res) => {
+router.post('/api/forgotPassword', async (req, res) => {
   //verifying clinet request
   if (!req.body.email || Object.keys(req.body).length > 1) {
     res.status(400).send('Invalid input');

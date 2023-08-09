@@ -11,6 +11,7 @@ import signUp from './routes/signUp.js';
 import login from './routes/login.js';
 import forgotPassword from './routes/forgotPassword.js';
 import checkAuth from './routes/checkAuth.js'
+import recepies from './routes/recepies.js'
 /* import socketIO from 'socket.io'; */
 
 
@@ -71,11 +72,12 @@ if(!process.env.USER_TYPE_MADA_PASS){
 
 //here we call the routers
 app.use(helmet());
-app.use('/api/signup', signUp);
-app.use('/api/login', login);
-app.use('/api/forgotPassword', forgotPassword);
-app.use('/api/token', token);
-app.use('/api/checkAuth', checkAuth);
+app.use(signUp);
+app.use(login);
+app.use(forgotPassword);
+app.use(token);
+app.use(checkAuth);
+app.use(recepies);
 
 
 

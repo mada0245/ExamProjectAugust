@@ -9,7 +9,6 @@ export async function connect() {
   try {
     //here we connect to TokenDB
     await tokenClient.connect();
-    console.log('Connected to token MongoDB');
     return tokenClient.db('TokenDB');
   } catch (error) {
     console.error('Failed to connect to token MongoDB', error);

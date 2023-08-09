@@ -6,7 +6,7 @@ const router = express.Router();
 router.use(express.json());
 router.use(cors());
 
-router.get('/',auth ,async (req, res) => {
+router.get('/api/checkAuth',auth ,async (req, res) => {
     res.send("The admin has been logged in");
   });
   

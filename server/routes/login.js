@@ -12,7 +12,7 @@ router.use(express.json());
 router.use(cors());
 
 //this is the router
-router.post('/', async (req, res) => {
+router.post('/api/login', async (req, res) => {
   //verifying clinet request
     if (!req.body.name || !req.body.password || Object.keys(req.body).length > 2) {
       res.status(400).send('Invalid input');

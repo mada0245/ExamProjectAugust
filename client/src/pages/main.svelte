@@ -1,7 +1,5 @@
 <script>
-  import { onMount } from 'svelte';
   import { authorisation } from '../stores/globalStores'
-  import GetToken from "../components/getToken.svelte";
   import CheckAuth from "../components/checkAuth.svelte";
   import { navigate } from "svelte-navigator";
 
@@ -17,7 +15,6 @@
 
 </script>
 
-<!-- <GetToken /> -->
 <CheckAuth />
   
   <h1>Welcome</h1>

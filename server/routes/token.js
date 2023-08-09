@@ -11,7 +11,7 @@ router.use(cors());
 //this are the routers
 
 //this router will save the jasonWebToken provided by the client, in the database
-router.post('/add', async (req, res) => {
+router.post('/api/token/add', async (req, res) => {
   //verifying clinet request
   if (!req.body.token || Object.keys(req.body).length > 1) {
     res.status(400).send('Invalid input');
@@ -40,7 +40,7 @@ router.post('/add', async (req, res) => {
 
 
 //this router deletes all tokens inside the tokens collection
-router.delete('/delete', async (req, res) => {
+router.delete('/api/token/delete', async (req, res) => {
   try {
     const database = await connect();
     const collection = database.collection('tokens');
@@ -56,7 +56,7 @@ router.delete('/delete', async (req, res) => {
 
 
 //this router gets the token from the database
-router.get('/get', async (req, res) => {
+router.get('/api/token/get', async (req, res) => {
   try {
 
     //connecting to the tokens collection inside the database

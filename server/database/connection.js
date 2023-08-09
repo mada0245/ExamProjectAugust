@@ -9,7 +9,6 @@ export async function connect() {
   try {
     //here we connect to the AuthSysstemDB
     await usersClient.connect();
-    console.log('Connected to MongoDB');
     return usersClient.db('AuthSystemDB');
   } catch (error) {
     console.error('Failed to connect to MongoDB', error);

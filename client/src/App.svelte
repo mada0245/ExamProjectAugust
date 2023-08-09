@@ -31,7 +31,7 @@
 
 <Route path="/mainPage/recepiesListPage">
   <nav>
-    <Link to="/mainPage"> Back |</Link>
+    <Link to="/mainPage">| Back |</Link>
     <Link to="/"> Log out |</Link>
   </nav>
   <RecepiesListPage />
@@ -39,7 +39,7 @@
 
 <Route path="/mainPage/createRecepiePage">
   <nav>
-    <Link to="/mainPage"> Back |</Link>
+    <Link to="/mainPage">| Back |</Link>
     <Link to="/"> Log out |</Link>
   </nav>
   <CreateRecepiePage />
@@ -47,7 +47,7 @@
 
 <Route path="/mainPage/todayMealPage">
   <nav>
-    <Link to="/mainPage"> Back |</Link>
+    <Link to="/mainPage">| Back |</Link>
     <Link to="/"> Log out |</Link>
   </nav>
   <TodayMealPage />
