@@ -1,29 +1,45 @@
 <script>
-    import { onMount } from "svelte";
-    import { BASE_URL } from "../stores/globalStores";
-    import GetRecepies from "../components/getRecepies.svelte";
+import { onMount } from "svelte";
+import { BASE_URL, isLoggedIn } from "../stores/globalStores";
+import GetRecepies from "../components/getRecepies.svelte";
+import { navigate } from "svelte-navigator";
 
-    let list
+let logged = false; 
 
-    onMount(async () => {
-        const registerURL = `${$BASE_URL}/api/recepies/get`;
-    
-        try {
-            
-            const response = await fetch(registerURL);
-            let result = await response.json();
 
-            list = result;
-            console.log("the getRecepies says: " + result);
+isLoggedIn.subscribe(updatedLogged => {
+    logged = updatedLogged;
+});
 
-        } catch (error) {
 
-            console.error('Error getting the recepies', error);
+onMount(()=>{
+    if(logged === false){
+        console.log('You must log in')
+        navigate('/');
+    }
+});
 
-        }
-    });
+let list = [];
+
+onMount(async () => {
+    const registerURL = `${$BASE_URL}/api/recepies/get`;
+
+    try {
+        
+        const response = await fetch(registerURL);
+        let result = await response.json();
+
+        list = result;
+
+    } catch (error) {
+
+        console.error('Error getting the recepies', error);
+
+    }
+});
+
 </script>
 
 <h1>This is the recepies list</h1>
 
-<GetRecepies {...list}/>
+<GetRecepies recepiesList = {list}/>

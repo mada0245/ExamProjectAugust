@@ -1,6 +1,6 @@
 <script>
     import { navigate } from "svelte-navigator";
-    import { BASE_URL } from '../stores/globalStores'
+    import { BASE_URL, isLoggedIn } from '../stores/globalStores'
     let username;
     let inputPassword;
 
@@ -53,7 +53,7 @@
         
         
         if (response.ok) {
-            //here we go to the main page
+            isLoggedIn.set(true);
             navigate("/mainPage");
         } else {
             console.error('Error:', response.status, response.statusText);

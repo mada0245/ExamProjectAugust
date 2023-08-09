@@ -1,7 +1,8 @@
 <script>
-  import { authorisation } from '../stores/globalStores'
+  import { authorisation, isLoggedIn } from '../stores/globalStores'
   import CheckAuth from "../components/checkAuth.svelte";
   import { navigate } from "svelte-navigator";
+  import { onMount } from 'svelte';
 
   let authorised = false; 
 
@@ -10,6 +11,20 @@
       authorised = updatedAuthorisation;
     });
  
+  let logged = false; 
+
+ 
+  isLoggedIn.subscribe(updatedLogged => {
+    logged = updatedLogged;
+  });
+ 
+
+  onMount(()=>{
+    if(logged === false){
+        console.log('You must log in')
+        navigate('/');
+    }
+  });
   
   
 
@@ -17,8 +32,8 @@
 
 <CheckAuth />
   
-  <h1>Welcome</h1>
-  <p>Choose a option:</p>
+<h1>Welcome</h1>
+<p>Choose a option:</p>
 
 {#if authorised === true}
   <div>
