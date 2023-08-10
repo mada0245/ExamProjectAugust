@@ -40,6 +40,7 @@
     <button class="button confirmButton" on:click={()=>{navigate("/mainPage/todayMealPage")}}>Today's Meal</button>
     <button class="button confirmButton" on:click={()=>{navigate("/mainPage/recepiesListPage")}}>Recepies List</button>
     <button class="button confirmButton" on:click={()=>{navigate("/mainPage/createRecepiePage")}}>Create Recepie</button>
+    <button class="button confirmButton" on:click={()=>{navigate("/mainPage/deleteRecepiePage")}}>Delete a Recepie</button>
   </div>
 {:else}
   <div>

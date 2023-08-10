@@ -7,6 +7,7 @@
   import RecepiesListPage from "./pages/recepiesList.svelte";
   import CreateRecepiePage from "./pages/createRecepie.svelte";
   import TodayMealPage from "./pages/todayMeal.svelte";
+  import DeleteRecepiePage from "./pages/deleteRecepie.svelte";
 
 </script>
 
@@ -51,6 +52,14 @@
     <Link to="/"> Log out |</Link>
   </nav>
   <TodayMealPage />
+</Route>
+
+<Route path="/mainPage/deleteRecepiePage">
+  <nav>
+    <Link to="/mainPage">| Back |</Link>
+    <Link to="/"> Log out |</Link>
+  </nav>
+  <DeleteRecepiePage />
 </Route>
 
 </Router>

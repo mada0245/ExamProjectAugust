@@ -51,6 +51,12 @@ router.delete('/api/recepies/delete/:name', auth, async (req, res) => {
   try {
     const database = await connect();
     const collection = database.collection('recepies');
+
+    const checkForRecepies = await collection.countDocuments();
+
+    if (checkForRecepies === 0){
+      res.status(404).send('There are no recepies to delete')
+    }
     
     await collection.deleteOne({name: req.params.name});
     res.send('The recepie has been delete');

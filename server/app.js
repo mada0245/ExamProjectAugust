@@ -16,25 +16,23 @@ import recepies from './routes/recepies.js'
 
 
 const server = http.createServer(app);
-/* const io = socketIO(server);
 
-io.on('connection', (socket) => {
-  //when a client is conected we present this message
-    console.log('A client connected');
-  
-    // reciving a message from the client
-    socket.on('chat message', (message) => {
-      console.log('Received message:', message);
-    });
-  
-    //when a client is diconected we present this message
-    socket.on('disconnect', () => {
-      console.log('A clinet disconnected');
-    });
-}); */
+import { Server } from "socket.io";
+const io = new Server(server, {
+    cors: {
+        origin: "*"
+    }
+});
 
-//here we verify if all necessery environment variables are sett up
-//if not we end the program 
+io.on("connection", (socket) => {
+
+  socket.on("recepies", (data) => {
+      console.log("The client says: " + data);
+      io.emit("Answer", `The ${data} will be prepared`);
+  });
+
+});
+
 if(!config.get('jwtPrivateKey')){
     console.log('mada0245_jwtPrivateKey is not defined.');
     process.exit(1);
