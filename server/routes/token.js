@@ -1,83 +1,88 @@
-//calling the requierd dependencies
+import { connect, close } from '../database/connectionToken.js';
 import express from 'express';
 
-import cors from 'cors';
-import { connect, close } from '../database/connectionToken.js';
-
 const router = express.Router();
-router.use(express.json());
-router.use(cors());
 
-//this are the routers
+  router.use(express.json());
 
-//this router will save the jasonWebToken provided by the client, in the database
-router.post('/api/token/add', async (req, res) => {
-  //verifying clinet request
-  if (!req.body.token || Object.keys(req.body).length > 1) {
-    res.status(400).send('Invalid input');
-  } else {
+
+  router.post('/api/token/add', async (req, res) => {
+
+    if (!req.body.token || Object.keys(req.body).length > 1) {
+      res.status(400).send('Invalid input');
+
+
+    } else {
+      try {
+
+        const database = await connect();
+        const collection = database.collection('tokens');
+
+        const newToken = {
+          token: req.body.token
+        };
+        await collection.insertOne(newToken);
+        res.send('You have a valid token');
+
+        
+      } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal server error');
+
+
+      } finally {
+        await close();
+      }
+    }
+  });
+
+
+  router.delete('/api/token/delete', async (req, res) => {
     try {
-      //connecting to the tokens collection inside the database
       const database = await connect();
       const collection = database.collection('tokens');
+      
+      await collection.deleteMany({});
 
-      const newToken = {
-        token: req.body.token
-      };
-      //here we store the token
-      await collection.insertOne(newToken);
 
-      //final response if no errors
-      res.send('You have a valid token');
     } catch (error) {
       console.error(error);
       res.status(500).send('Internal server error');
+
+
     } finally {
       await close();
     }
-  }
-});
+  });
 
 
-//this router deletes all tokens inside the tokens collection
-router.delete('/api/token/delete', async (req, res) => {
-  try {
-    const database = await connect();
-    const collection = database.collection('tokens');
-    
-    await collection.deleteMany({});
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal server error');
-  } finally {
-    await close();
-  }
-});
+
+  router.get('/api/token/get', async (req, res) => {
+    try {
+
+ 
+      const database = await connect();
+      const collection = database.collection('tokens');
+      
+  
+      const tokens = await collection.find().toArray();
+      if (tokens.length === 0) {
+        res.status(404).send('No tokens found');
 
 
-//this router gets the token from the database
-router.get('/api/token/get', async (req, res) => {
-  try {
+      } else {
+        res.send(tokens[0].token);
+      }
 
-    //connecting to the tokens collection inside the database
-    const database = await connect();
-    const collection = database.collection('tokens');
-    
-    //here we store the token inside this variable as an array(there is suppose to always just be 1 or 0 tokens in the database)
-    const tokens = await collection.find().toArray();
-    
-    if (tokens.length === 0) {
-      res.status(404).send('No tokens found');
-    } else {
-      //if there is a token here we send it back to the client, this is the final response if no errors
-      res.send(tokens[0].token);
+
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal server error');
+
+      
+    } finally {
+      await close();
     }
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal server error');
-  } finally {
-    await close();
-  }
-});
+  });
 
 export default router;

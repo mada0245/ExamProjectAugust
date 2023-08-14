@@ -1,13 +1,14 @@
-import express from 'express';
-import cors from 'cors';
 import auth from '../middleware/auth.js';
+import express from 'express';
+
 
 const router = express.Router();
-router.use(express.json());
-router.use(cors());
 
-router.get('/api/checkAuth',auth ,async (req, res) => {
-    res.send("The admin has been logged in");
-  });
-  
-  export default router;
+  router.use(express.json());
+
+
+  router.get('/api/checkAuth',auth ,async (req, res) => {
+      res.send("The admin has been logged in");
+    });
+
+export default router;
