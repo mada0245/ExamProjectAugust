@@ -29,7 +29,6 @@
               
 
               if(response2.ok){
-                  console.log(await response2.text());
                   authorisation = true;
               }else{
                   authorisation = false;

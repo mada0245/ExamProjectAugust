@@ -1,5 +1,6 @@
 <script>
     import { BASE_URL, token } from "../stores/globalStores";
+    import { navigate } from "svelte-navigator";
 
     export let nameToFetch;
     export let ingredientesToFetch = [];
@@ -31,6 +32,7 @@ async function addRecepie (){
 
         if(response.ok){
                 alert(await response.text());
+                navigate('/mainPage');
         }else{
             alert(await response.text());
         }
