@@ -1,7 +1,5 @@
 <script>
-    import io from "socket.io-client";
-
-    const socket = io("localhost:8000");
+    import socket from '../util/socketInitializator'
 
     let todaysRecepies = [];
    
@@ -10,14 +8,8 @@
         socket.emit("recepies", todaysRecepies);
     }
 
-    socket.on("Answer", (data) => {
-      
-        alert("The server says: " + data)
-
-  });
-
-    
 	export let recepiesNames = [];
+    
 </script>
 
 <h1 class="title">What would you like to eat today ?</h1>
