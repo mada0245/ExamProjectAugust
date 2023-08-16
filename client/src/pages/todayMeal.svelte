@@ -1,25 +1,10 @@
 <script>
-import { isLoggedIn, BASE_URL } from "../stores/globalStores";
+import { BASE_URL } from "../stores/globalStores";
 import { onMount } from "svelte";
-import { navigate } from "svelte-navigator";
-import ChooseMeal from "../components/chooseMeal.svelte";
+import InformTheMeal from "../components/informTheMeal.svelte";
+import CheckLogIn from "../components/checkLogIn.svelte";
 
-    let logged = false; 
-
-
-isLoggedIn.subscribe(updatedLogged => {
-    logged = updatedLogged;
-});
-
-
-onMount(()=>{
-    if(logged === false){
-        console.log('You must log in')
-        navigate('/');
-    }
-});
-
-	let fetchedNames = [];
+let fetchedNames = [];
 
 
 onMount(async () => {
@@ -48,6 +33,5 @@ onMount(async () => {
 
 </script>
 
-<h1 class="title">What would you like to eat today ?</h1>
-
-<ChooseMeal recepiesNames = {fetchedNames}/>
+<CheckLogIn />
+<InformTheMeal recepiesNames = {fetchedNames}/>

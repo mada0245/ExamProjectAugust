@@ -1,53 +1,51 @@
 <script>
-  import { authorisation, isLoggedIn } from '../stores/globalStores'
-  import CheckAuth from "../components/checkAuth.svelte";
-  import { navigate } from "svelte-navigator";
-  import { onMount } from 'svelte';
+  import MainPageButtons from "../components/mainPageButtons.svelte";
+  import CheckLogIn from '../components/checkLogIn.svelte';
+  import { onMount } from "svelte";
+  import { BASE_URL, token } from "../stores/globalStores";
+   
+  let authorisation;
 
-  let authorised = false; 
 
- 
-    authorisation.subscribe(updatedAuthorisation => {
-      authorised = updatedAuthorisation;
-    });
- 
-  let logged = false; 
+  onMount(async () => {
+      const registerURL1 = `${$BASE_URL}/api/token/get`;
 
- 
-  isLoggedIn.subscribe(updatedLogged => {
-    logged = updatedLogged;
+      try {
+          
+          const response1 = await fetch(registerURL1);
+
+          if(response1.ok){
+              let result = await response1.text();
+              token.set(result);
+
+
+              const registerURL2 = `${$BASE_URL}/api/checkAuth`;
+
+              const response2 = await fetch(registerURL2, {
+              headers: {
+                  'x-auth-token': result
+              }
+              });
+              
+
+              if(response2.ok){
+                  console.log(await response2.text());
+                  authorisation = true;
+              }else{
+                  authorisation = false;
+              }
+          }
+
+      } catch (error) {
+
+          console.error('Error getting the token', error);
+
+      }
   });
- 
 
-  onMount(()=>{
-    if(logged === false){
-        console.log('You must log in')
-        navigate('/');
-    }
-  });
-  
-  
 
 </script>
 
-<CheckAuth />
-  
-<h1>Welcome</h1>
-<p>Choose a option:</p>
+<CheckLogIn />
+<MainPageButtons authorised={authorisation}/>
 
-{#if authorised === true}
-  <div>
-    <button class="button confirmButton" on:click={()=>{navigate("/mainPage/todayMealPage")}}>Today's Meal</button>
-    <button class="button confirmButton" on:click={()=>{navigate("/mainPage/recepiesListPage")}}>Recepies List</button>
-    <button class="button confirmButton" on:click={()=>{navigate("/mainPage/createRecepiePage")}}>Create Recepie</button>
-    <button class="button confirmButton" on:click={()=>{navigate("/mainPage/deleteRecepiePage")}}>Delete a Recepie</button>
-  </div>
-{:else}
-  <div>
-    <button class="button confirmButton" on:click={()=>{navigate("/mainPage/todayMealPage")}}>Today's Meal</button>
-    <button class="button confirmButton" on:click={()=>{navigate("/mainPage/recepiesListPage")}}>Recepies List</button>
-  </div> 
-{/if}
-
-
-  

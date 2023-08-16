@@ -1,15 +1,16 @@
 <script>
     import { navigate } from "svelte-navigator";
     import { BASE_URL, isLoggedIn } from '../stores/globalStores'
+    
     let username;
     let inputPassword;
 
     async function redirectToMainPage() {
-        //we proceed if the username in and passowrd inputs are filled
+
         if(username && inputPassword){
                 
             const url = `${$BASE_URL}/api/login`;
-            //this is the data we send to the server
+  
             const data = { name: username, password: inputPassword};
     
             const response = await fetch(url, {
@@ -23,7 +24,6 @@
             
             if (response.ok) {
                 const result = await response.text();
-                //the result in text, is the jasonWebToken that now we call the next function with
                 saveToken(result);
             } else {
                 console.error('Error:', response.status, response.statusText);
@@ -31,16 +31,16 @@
             }
 
         }else{
-            alert("Wrong Credetials");
+            alert("Please insert your credetials");
         }
     }
 
 
-    //here we save the recived token to the database and go to the main page after
+
     async function saveToken(token) {
 
         const url = `${$BASE_URL}/api/token/add`;
-        //here is the data we send to the server
+
         const data = {token};
 
         const response = await fetch(url, {
@@ -75,3 +75,11 @@
 <div>
     <button class="button confirmButton" on:click={redirectToMainPage}>Login</button>
 </div>
+
+<style>
+    input{
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+</style>

@@ -1,33 +1,7 @@
 <script>
-import { authorisation, isLoggedIn} from '../stores/globalStores'
-import { onMount } from 'svelte';
-import { navigate } from 'svelte-navigator';
 import AddNewRecepie from '../components/addNewRecepie.svelte';
+import CheckLogIn from '../components/checkLogIn.svelte';
 
-let authorised = false; 
-
-
-authorisation.subscribe(updatedAuthorisation => {
-    authorised = updatedAuthorisation;
-});
-
-let logged = false; 
-
-
-isLoggedIn.subscribe(updatedLogged => {
-    logged = updatedLogged;
-});
-
-
-onMount(()=>{
-if(authorised === false){
-    console.log('You must log in as an admin')
-    navigate('/mainPage');
-}else if(logged === false){
-    console.log('You must log in')
-    navigate('/');
-}
-});
 
 let currentIngredientes = ["apple", "oil", "milk", "cheese", "tomato", "onion", "flour", "cereals", "chocolate"];
 let recepiesName;
@@ -35,6 +9,8 @@ let recepiesIngredientes = [];
 let recepiesDescription;
 
 </script>
+
+<CheckLogIn />
 
 <h1 class="Title">Rcepie creation</h1>
 
@@ -70,7 +46,45 @@ let recepiesDescription;
 
     <label for="recepiesDescription">How to prepare:</label>
     <br>
-    <input type="text" id="recepiesDescription" bind:value={recepiesDescription}><br><br>
+    <textarea id="recepiesDescription" bind:value={recepiesDescription}></textarea>
+
 </div>
 
 <AddNewRecepie nameToFetch={recepiesName} ingredientesToFetch={recepiesIngredientes} descriptionToFetch={recepiesDescription}/>
+
+
+<style>
+
+  
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  
+    input[type="text"] {
+      width: 25%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #recepiesDescription{
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+       
+    }
+  
+    .ingredientesSelector {
+      margin-top: 20px;
+    }
+  
+    .ingredientesSelector label {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+  </style>

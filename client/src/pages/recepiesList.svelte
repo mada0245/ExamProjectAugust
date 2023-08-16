@@ -1,23 +1,8 @@
 <script>
 import { onMount } from "svelte";
-import { BASE_URL, isLoggedIn } from "../stores/globalStores";
-import GetRecepies from "../components/getRecepies.svelte";
-import { navigate } from "svelte-navigator";
-
-let logged = false; 
-
-
-isLoggedIn.subscribe(updatedLogged => {
-    logged = updatedLogged;
-});
-
-
-onMount(()=>{
-    if(logged === false){
-        console.log('You must log in')
-        navigate('/');
-    }
-});
+import { BASE_URL} from "../stores/globalStores";
+import ShowRecepies from "../components/showRecepies.svelte";
+import CheckLogIn from "../components/checkLogIn.svelte";
 
 let list = [];
 
@@ -40,6 +25,8 @@ onMount(async () => {
 
 </script>
 
+<CheckLogIn />
+
 <h1>This is the recepies list</h1>
 
-<GetRecepies recepiesList = {list}/>
+<ShowRecepies recepiesList = {list}/>

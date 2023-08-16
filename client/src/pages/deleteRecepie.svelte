@@ -1,39 +1,15 @@
 <script>
-    import { authorisation, isLoggedIn, BASE_URL } from '../stores/globalStores'
+    import { BASE_URL } from '../stores/globalStores'
     import { onMount } from 'svelte';
-    import { navigate } from 'svelte-navigator';
     import DeleteARecepie from '../components/deleteARecepie.svelte';
+    import CheckLogIn from '../components/checkLogIn.svelte';
     
-    let authorised = false; 
-    
-    
-    authorisation.subscribe(updatedAuthorisation => {
-        authorised = updatedAuthorisation;
-    });
-    
-    let logged = false; 
-    
-    
-    isLoggedIn.subscribe(updatedLogged => {
-        logged = updatedLogged;
-    });
-    
-    
-    onMount(()=>{
-    if(authorised === false){
-        console.log('You must log in as an admin')
-        navigate('/mainPage');
-    }else if(logged === false){
-        console.log('You must log in')
-        navigate('/');
-    }
-    });
     
     let theDeleteName;
     let recepiesToDelete = [];
 
 
-    onMount(async () => {
+onMount(async () => {
     const registerURL = `${$BASE_URL}/api/recepies/get`;
 
     try {
@@ -51,7 +27,9 @@
 });
 
     
-    </script>
+</script>
+
+<CheckLogIn />
     
     <h1 class="Title">Delete a recepie</h1>
     <h2 class="subtitle">Please select the recepie you want to delete</h2>
@@ -60,7 +38,7 @@
 	<label>
 		<input
 			type="radio"
-			name="scoops"
+			name="recepies"
 			value={recepie}
 			bind:group={theDeleteName}
 		/>
@@ -76,6 +54,7 @@
         <p>No recepie selected</p>
     {/if}
 </div>
+
 
 <DeleteARecepie recepieToDelete = {theDeleteName} />
 

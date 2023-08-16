@@ -20,6 +20,8 @@
 	export let recepiesNames = [];
 </script>
 
+<h1 class="title">What would you like to eat today ?</h1>
+
 <div class="Meal">
     
     {#each recepiesNames as recepie}

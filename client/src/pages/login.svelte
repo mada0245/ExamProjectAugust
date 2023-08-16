@@ -1,9 +1,9 @@
  <script>
-    import { beforeUpdate } from 'svelte';
-    import { BASE_URL } from '../stores/globalStores'
+    import { onMount } from 'svelte';
+    import { BASE_URL, isLoggedIn } from '../stores/globalStores'
     import LoginIntoWebsite from '../components/loginIntoWebsite.svelte';
 
-    beforeUpdate(async () => {
+    onMount(async () => {
         const registerURL = `${$BASE_URL}/api/token/delete`;
   
         const response = await fetch(registerURL, {
@@ -12,6 +12,8 @@
 
         if (!response.ok) {
             throw new Error('The token has failed to be deleted');
+        }else{
+            isLoggedIn.set(false);
         }
     });
  </script>
