@@ -19,8 +19,14 @@ let recepiesDescription;
     <br>
     <input type="text" id="recepiesName" bind:value={recepiesName}><br><br>
 
-    <div class="ingredientesSelector">
     
+
+    <label for="recepiesDescription">How to prepare:</label>
+    <br>
+    <textarea id="recepiesDescription" bind:value={recepiesDescription}></textarea>
+
+    <div class="ingredientesSelector">
+        
         {#each currentIngredientes as ingredient}
             <label>
                 <input
@@ -40,17 +46,14 @@ let recepiesDescription;
             <p>Please select at least 2 ingredientes</p>
         {:else}
             <p>You have chosen {recepiesIngredientes}</p>
+            <AddNewRecepie nameToFetch={recepiesName} ingredientesToFetch={recepiesIngredientes} descriptionToFetch={recepiesDescription}/>
         {/if}
         
     </div>
 
-    <label for="recepiesDescription">How to prepare:</label>
-    <br>
-    <textarea id="recepiesDescription" bind:value={recepiesDescription}></textarea>
-
 </div>
 
-<AddNewRecepie nameToFetch={recepiesName} ingredientesToFetch={recepiesIngredientes} descriptionToFetch={recepiesDescription}/>
+
 
 
 <style>

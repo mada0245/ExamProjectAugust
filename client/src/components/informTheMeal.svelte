@@ -34,10 +34,10 @@
     {:else if todaysRecepies.length > 6}
         <p>You have chosen {todaysRecepies}</p> 
         <p>Are you making a party ?</p>
-    {:else}
+        <button on:click={todayRecepies}>Send</button>
+    {:else if todaysRecepies.length > 0}
         <p>You have chosen {todaysRecepies}</p>
+        <button on:click={todayRecepies}>Send</button>
     {/if}
     
 </div>
-
-<button on:click={todayRecepies}>Send</button>

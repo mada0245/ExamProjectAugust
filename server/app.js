@@ -60,17 +60,6 @@ import config from 'config';
   process.exit(1);
   }
 
-  /*if(!process.env.USER_TYPE_ADMIN_PASS){
-  console.log('USER_TYPE_ADMIN_PASS is not defined.');
-  process.exit(1);
-  }
-
-  if(!process.env.USER_TYPE_MADA_PASS){
-  console.log('USER_TYPE_MADA_PASS is not defined.');
-  process.exit(1);
-  }*/
-
-
 import token from './routes/token.js';
   app.use(token);
 
