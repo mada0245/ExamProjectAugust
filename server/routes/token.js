@@ -6,7 +6,7 @@ const router = express.Router();
   router.use(express.json());
 
 
-  router.post('/api/token/add', async (req, res) => {
+  router.post('/token', async (req, res) => {
 
     if (!req.body.token || Object.keys(req.body).length > 1) {
       res.status(400).send('Invalid input');
@@ -37,7 +37,7 @@ const router = express.Router();
   });
 
 
-  router.delete('/api/token/delete', async (req, res) => {
+  router.delete('/token', async (req, res) => {
     try {
       const database = await connect();
       const collection = database.collection('tokens');
@@ -57,7 +57,7 @@ const router = express.Router();
 
 
 
-  router.get('/api/token/get', async (req, res) => {
+  router.get('/token', async (req, res) => {
     try {
 
  

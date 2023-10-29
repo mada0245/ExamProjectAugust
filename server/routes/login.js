@@ -8,7 +8,7 @@ const router = express.Router();
   router.use(express.json());
 
 
-  router.post('/api/login', async (req, res) => {
+  router.post('/login', async (req, res) => {
 
       if (!req.body.name || !req.body.password || Object.keys(req.body).length > 2) {
         res.status(400).send('Invalid input');

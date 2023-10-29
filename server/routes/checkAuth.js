@@ -7,7 +7,7 @@ const router = express.Router();
   router.use(express.json());
 
 
-  router.get('/api/checkAuth',auth ,async (req, res) => {
+  router.get('/checkAuth',auth ,async (req, res) => {
       res.send("The admin has been logged in");
     });
 

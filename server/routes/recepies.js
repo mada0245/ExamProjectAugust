@@ -7,7 +7,7 @@ const router = express.Router();
   router.use(express.json());
 
 
-  router.post('/api/recepies/add', auth, async (req, res) => {
+  router.post('/recepies', auth, async (req, res) => {
 
     if (!req.body.name || !req.body.ingredientes || !Array.isArray(req.body.ingredientes) || !req.body.description ||Object.keys(req.body).length > 3) {
       res.status(400).send('Invalid input');

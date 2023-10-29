@@ -7,7 +7,7 @@ const router = express.Router();
   router.use(express.json());
 
 
-  router.post('/api/forgotPassword', async (req, res) => {
+  router.post('/forgotPassword', async (req, res) => {
 
     if (!req.body.email || Object.keys(req.body).length > 1) {
       res.status(400).send('Invalid input');
