@@ -32,7 +32,7 @@
   }
 
   async function saveToken(token) {
-    const url = `${$BASE_URL}/api/token/add`;
+    const url = `${$BASE_URL}/tokens`;
 
     const data = { token };
 

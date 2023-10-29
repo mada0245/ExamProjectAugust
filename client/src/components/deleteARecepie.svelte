@@ -13,7 +13,7 @@
   async function deleteRecepie() {
     if (recepieToDelete) {
       const deleteRecepieName = recepieToDelete;
-      const registerURL2 = `${$BASE_URL}/recepies${deleteRecepieName}`;
+      const registerURL2 = `${$BASE_URL}/recepies/${deleteRecepieName}`;
 
       const response2 = await fetch(registerURL2, {
         method: "DELETE",

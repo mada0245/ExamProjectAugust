@@ -16,7 +16,7 @@
         let result = await response1.text();
         token.set(result);
 
-        const registerURL2 = `${$BASE_URL}/api/checkAuth`;
+        const registerURL2 = `${$BASE_URL}/checkAuth`;
 
         const response2 = await fetch(registerURL2, {
           headers: {

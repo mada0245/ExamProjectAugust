@@ -45,7 +45,7 @@ const router = express.Router();
 
 
 
-  router.delete('/api/recepies/delete/:name', auth, async (req, res) => {
+  router.delete('/recepies/:name', auth, async (req, res) => {
       
     try {
       const database = await connect();
@@ -72,7 +72,7 @@ const router = express.Router();
 
 
 
-  router.get('/api/recepies/get', async (req, res) => {
+  router.get('/recepies', async (req, res) => {
     
     try {
       const database = await connect();
