@@ -60,7 +60,7 @@ import config from 'config';
   process.exit(1);
   }
 
-import token from './routes/token.js';
+import token from './routes/tokens.js';
   app.use(token);
 
 

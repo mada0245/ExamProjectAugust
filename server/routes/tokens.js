@@ -1,4 +1,4 @@
-import { connect, close } from '../database/connectionToken.js';
+import { connect, close } from '../database/connectionTokens.js';
 import express from 'express';
 
 const router = express.Router();
@@ -6,7 +6,7 @@ const router = express.Router();
   router.use(express.json());
 
 
-  router.post('/token', async (req, res) => {
+  router.post('/tokens', async (req, res) => {
 
     if (!req.body.token || Object.keys(req.body).length > 1) {
       res.status(400).send('Invalid input');
@@ -37,7 +37,7 @@ const router = express.Router();
   });
 
 
-  router.delete('/token', async (req, res) => {
+  router.delete('/tokens', async (req, res) => {
     try {
       const database = await connect();
       const collection = database.collection('tokens');
@@ -57,7 +57,7 @@ const router = express.Router();
 
 
 
-  router.get('/token', async (req, res) => {
+  router.get('/tokens', async (req, res) => {
     try {
 
  
