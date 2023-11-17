@@ -1,8 +1,8 @@
 <script>
   import { BASE_URL } from "../stores/globalStores";
   import { onMount } from "svelte";
-  import DeleteARecepie from "../components/deleteARecepie.svelte";
-  import CheckLogIn from "../components/checkLogIn.svelte";
+  import DeleteARecepie from "../childComponents/deleteARecepie.svelte";
+  import CheckLogIn from "../childComponents/checkLogIn.svelte";
 
   let theDeleteName;
   let recepiesToDelete = [];

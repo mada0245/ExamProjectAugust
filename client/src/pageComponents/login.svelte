@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { BASE_URL, isLoggedIn } from "../stores/globalStores";
-  import LoginIntoWebsite from "../components/loginIntoWebsite.svelte";
+  import LoginIntoWebsite from "../childComponents/loginIntoWebsite.svelte";
 
   onMount(async () => {
     const registerURL = `${$BASE_URL}/tokens`;

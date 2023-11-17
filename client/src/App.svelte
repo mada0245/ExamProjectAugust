@@ -1,17 +1,15 @@
 <script>
   import { Router, Link, Route } from "svelte-navigator";
 
-  import LoginPage from "./pages/login.svelte";
-  import MainPage from "./pages/main.svelte";
-  import ForgotPasswordPage from "./pages/forgotPassword.svelte";
-  import RecepiesListPage from "./pages/recepiesList.svelte";
-  import CreateRecepiePage from "./pages/createRecepie.svelte";
-  import TodayMealPage from "./pages/todayMeal.svelte";
-  import DeleteRecepiePage from "./pages/deleteRecepie.svelte";
+  import LoginPage from "./pageComponents/login.svelte";
+  import MainPage from "./pageComponents/main.svelte";
+  import ForgotPasswordPage from "./pageComponents/forgotPassword.svelte";
+  import RecepiesListPage from "./pageComponents/recepiesList.svelte";
+  import CreateRecepiePage from "./pageComponents/createRecepie.svelte";
+  import TodayMealPage from "./pageComponents/todayMeal.svelte";
+  import DeleteRecepiePage from "./pageComponents/deleteRecepie.svelte";
 
 </script>
-
-
 
 <Router>
 
@@ -31,11 +29,10 @@
     <nav class="navBar">
       <Link to="/">Log out</Link>
     </nav>
-    
     <MainPage />
   </Route>
 
-  <Route path="/mainPage/recepiesListPage">
+  <Route path="/recepiesListPage">
     <nav class="navBar">
       <Link to="/mainPage">Back</Link>
       <Link to="/">Log out</Link>
@@ -43,7 +40,7 @@
     <RecepiesListPage />
   </Route>
 
-  <Route path="/mainPage/createRecepiePage">
+  <Route path="/createRecepiePage">
     <nav class="navBar">
       <Link to="/mainPage">Back</Link>
       <Link to="/">Log out</Link>
@@ -51,7 +48,7 @@
     <CreateRecepiePage />
   </Route>
 
-  <Route path="/mainPage/todayMealPage">
+  <Route path="/todayMealPage">
     <nav class="navBar">
       <Link to="/mainPage">Back</Link>
       <Link to="/">Log out</Link>
@@ -59,7 +56,7 @@
     <TodayMealPage />
   </Route>
 
-  <Route path="/mainPage/deleteRecepiePage">
+  <Route path="/deleteRecepiePage">
     <nav class="navBar">
       <Link to="/mainPage">Back</Link>
       <Link to="/">Log out</Link>

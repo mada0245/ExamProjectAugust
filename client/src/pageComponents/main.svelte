@@ -1,6 +1,6 @@
 <script>
-  import MainPageButtons from "../components/mainPageButtons.svelte";
-  import CheckLogIn from "../components/checkLogIn.svelte";
+  import MainPageButtons from "../childComponents/mainPageButtons.svelte";
+  import CheckLogIn from "../childComponents/checkLogIn.svelte";
   import { onMount } from "svelte";
   import { BASE_URL, token } from "../stores/globalStores";
 
