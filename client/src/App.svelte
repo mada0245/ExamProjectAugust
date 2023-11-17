@@ -9,9 +9,19 @@
   import TodayMealPage from "./pageComponents/todayMeal.svelte";
   import DeleteRecepiePage from "./pageComponents/deleteRecepie.svelte";
 
+  let isDarkMode = false;
+
+  function changeDarkMode() {
+    isDarkMode = !isDarkMode;
+    document.body.classList.toggle("dark-mode", isDarkMode);
+  }
+
+
 </script>
 
 <Router>
+
+  <button class="darkMode" on:click={changeDarkMode}>{isDarkMode ? "Light" : "Dark"}</button>
 
   <Route path="/">
     <LoginPage />
@@ -75,6 +85,20 @@
     background-color: #f0f0f0;
     padding: 10px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 90%;
   }
-  
+
+  .darkMode {
+    position: absolute;
+    right: 2%;
+    width: 5%;
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+  }
+
+  .darkMode:hover {
+    color: #535bf2;
+  }
+
 </style>

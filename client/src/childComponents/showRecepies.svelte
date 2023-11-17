@@ -30,9 +30,13 @@
   
     .recepie-name {
       margin: 0;
-      color: #333;
+      color: #646cff;
       font-size: 18px;
       font-weight: bold;
+    }
+
+    .recepie-name:hover {
+      color: #535bf2;
     }
   
     .recepies-details {

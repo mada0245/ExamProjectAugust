@@ -48,8 +48,6 @@ import config from 'config';
   if(!process.env.NODEMAILER_PASSWORD){
     console.log('NODEMAILER_PASSWORD is not defined.');
     process.exit(1);
-  }else{
-    console.log(process.env.NODEMAILER_PASSWORD);
   }
 
   if(!process.env.MADA0245_ADMIN_PASS){
