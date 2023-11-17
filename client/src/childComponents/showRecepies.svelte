@@ -22,10 +22,11 @@
       margin: 10px 0;
       cursor: pointer;
       border-radius: 5px;
+      width: 90%;
     }
   
     .recepies-container:hover {
-      background-color: #f0f0f0;
+      border-color: #646cff;
     }
   
     .recepie-name {
