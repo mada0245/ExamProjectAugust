@@ -1,19 +1,44 @@
 <script>
     export let recepiesList = [];
     let seeRecepie; 
+
+    let filter = '';
+
+  function searchRecepies() {
+    const recepieList = document.getElementById("myRecepies");
+    const span = recepieList.getElementsByTagName("span");
+
+    for (let i = 0; i < span.length; i++) {
+      const h3 = span[i].querySelector("h3");
+      const txtValue = h3.textContent || h3.innerText;
+
+      if (txtValue.toUpperCase().indexOf(filter.toUpperCase()) > -1) {
+        span[i].style.display = "";
+      } else {
+        span[i].style.display = "none";
+      }
+    }
+  }
+
   </script>
-  
+
+<input type="text" placeholder="Search a recepie" bind:value={filter} on:input={searchRecepies} class="searchBar" />
+
+<div id="myRecepies">
   {#each recepiesList as recepie}
-  <div class="recepies-container">
-      <h3 class="recepie-name" on:click={() => seeRecepie = recepie} on:keydown={seeRecepie}>{recepie.name}</h3>
-      {#if seeRecepie === recepie}
-        <div class = "recepies-details">
-          <p class="ingredientes">Ingredientes - {recepie.ingredients}</p>
-          <p class="preparation">How to prepare - {recepie.description}</p>
-        </div>
-      {/if}
-  </div>
+    <span>
+      <div class="recepies-container" id="recepies-container">
+        <h3 class="recepie-name" on:click={() => seeRecepie = recepie} on:keydown={seeRecepie}>{recepie.name}</h3>
+        {#if seeRecepie === recepie}
+          <div class = "recepies-details">
+            <p class="ingredientes">Ingredientes - {recepie.ingredients}</p>
+            <p class="preparation">How to prepare - {recepie.description}</p>
+          </div>
+        {/if}
+      </div>
+    </span>
   {/each}
+</div>
 
   <style>
     .recepies-container {
@@ -52,6 +77,10 @@
       margin: 0;
       font-size: 14px;
       color: #555;
+    }
+
+    .searchBar {
+      width: 40%;
     }
   </style>
   
