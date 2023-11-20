@@ -80,6 +80,9 @@
     }
 
     .searchBar {
+      border-radius: 5px;
+      background-color: #f0f0f0;
+      padding: 7px;
       width: 40%;
     }
   </style>
