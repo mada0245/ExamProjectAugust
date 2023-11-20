@@ -1,6 +1,7 @@
 <script>
   import { BASE_URL } from "../stores/globalStores";
   import { navigate } from "svelte-navigator";
+  import toastr from "toastr";
 
   let inputEmail;
   const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -20,15 +21,15 @@
       });
 
       if (res.ok) {
-        alert(`An email has been sent to ${inputEmail}`);
+        toastr.success(`An email has been sent to ${inputEmail}`,"✅Success✅");
         navigate("/");
       } else {
         console.error("Error:", res.status, res.statusText);
         const result = await res.text();
-        alert(result);
+        toastr.error(result, "❌ Error ❌");
       }
     } else {
-      alert("Please insert a valid email");
+      toastr.error("Please insert a valid email", "❌ Error ❌");
     }
   }
 </script>

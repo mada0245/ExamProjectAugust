@@ -25,50 +25,50 @@
 
   <Route path="/">
     <LoginPage />
-    <Link to="/forgotPasswordPage">Forgot password</Link>
+    <Link to="/forgotPassword">Forgot password</Link>
   </Route>
 
-  <Route path="/forgotPasswordPage">
+  <Route path="/forgotPassword">
     <nav class="navBar">
       <Link to="/">Back</Link>
     </nav>
     <ForgotPasswordPage />
   </Route>
 
-  <Route path="/mainPage">
+  <Route path="/main">
     <nav class="navBar">
       <Link to="/">Log out</Link>
     </nav>
     <MainPage />
   </Route>
 
-  <Route path="/recepiesListPage">
+  <Route path="/recepiesList">
     <nav class="navBar">
-      <Link to="/mainPage">Back</Link>
+      <Link to="/main">Back</Link>
       <Link to="/">Log out</Link>
     </nav>
     <RecepiesListPage />
   </Route>
 
-  <Route path="/createRecepiePage">
+  <Route path="/createRecepie">
     <nav class="navBar">
-      <Link to="/mainPage">Back</Link>
+      <Link to="/main">Back</Link>
       <Link to="/">Log out</Link>
     </nav>
     <CreateRecepiePage />
   </Route>
 
-  <Route path="/todayMealPage">
+  <Route path="/todayMeal">
     <nav class="navBar">
-      <Link to="/mainPage">Back</Link>
+      <Link to="/main">Back</Link>
       <Link to="/">Log out</Link>
     </nav>
     <TodayMealPage />
   </Route>
 
-  <Route path="/deleteRecepiePage">
+  <Route path="/deleteRecepie">
     <nav class="navBar">
-      <Link to="/mainPage">Back</Link>
+      <Link to="/main">Back</Link>
       <Link to="/">Log out</Link>
     </nav>
     <DeleteRecepiePage />

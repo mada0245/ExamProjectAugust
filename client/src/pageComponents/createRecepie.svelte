@@ -3,7 +3,7 @@ import AddNewRecepie from '../childComponents/addNewRecepie.svelte';
 import CheckLogIn from '../childComponents/checkLogIn.svelte';
 
 
-let currentIngredientes = ["apple", "oil", "milk", "cheese", "tomato", "onion", "flour", "cereals", "chocolate"];
+let currentIngredientes = ["🍏 apple", "🛢️ oil", "🥛 milk", "🧀 cheese", "🍅 tomato", "🧅 onion", "🍚 flour", "🌾 cereals", "🍫 chocolate", "🥚 egg"];
 let recepiesName;
 let recepiesIngredientes = [];
 let recepiesDescription;

@@ -1,6 +1,7 @@
 <script>
   import { BASE_URL, token } from "../stores/globalStores";
   import { navigate } from "svelte-navigator";
+  import toastr from "toastr";
 
   export let nameToFetch;
   export let ingredientesToFetch = [];
@@ -31,13 +32,13 @@
       });
 
       if (response.ok) {
-        alert(await response.text());
-        navigate("/mainPage");
+        toastr.success(await response.text(),"✅Success✅");
+        navigate("/main");
       } else {
-        alert(await response.text());
+        toastr.error(await response.text(), "❌ Error ❌");
       }
     } else {
-      alert("Please complete everything");
+      toastr.error("Please complete everything", "❌ Error ❌");
     }
   }
 </script>
