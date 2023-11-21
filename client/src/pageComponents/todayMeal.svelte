@@ -4,7 +4,7 @@
   import InformTheMeal from "../childComponents/informTheMeal.svelte";
   import CheckLogIn from "../childComponents/checkLogIn.svelte";
 
-  let fetchedNames = [];
+  let fetchedRecepies = [];
 
   onMount(async () => {
     try {
@@ -14,7 +14,7 @@
 
       if (response.ok) {
         let result = await response.json();
-        fetchedNames = result.map((recepie) => recepie.name);
+        fetchedRecepies = result.map((recepie) => recepie);
       }
     } catch (error) {
       console.error("Error getting the recepies", error);
@@ -23,4 +23,4 @@
 </script>
 
 <CheckLogIn />
-<InformTheMeal recepiesNames={fetchedNames} />
+<InformTheMeal recepies = {fetchedRecepies}/>

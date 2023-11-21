@@ -33,6 +33,7 @@
           <div class = "recepies-details">
             <p class="ingredientes">Ingredientes - {recepie.ingredients}</p>
             <p class="preparation">How to prepare - {recepie.description}</p>
+            <p class="preparationTime">Preparation time - {recepie.preparationTime} seconds</p>
           </div>
         {/if}
       </div>
@@ -73,7 +74,7 @@
       border-radius: 5px;
     }
   
-    .ingredientes, .preparation {
+    .ingredientes, .preparation, .preparationTime {
       margin: 0;
       font-size: 14px;
       color: #555;

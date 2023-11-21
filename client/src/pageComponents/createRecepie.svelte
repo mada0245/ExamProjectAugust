@@ -7,6 +7,7 @@ let currentIngredientes = ["🍏 apple", "🛢️ oil", "🥛 milk", "🧀 chees
 let recepiesName;
 let recepiesIngredientes = [];
 let recepiesDescription;
+let recepiesPreparationTime;
 
 </script>
 
@@ -23,7 +24,11 @@ let recepiesDescription;
 
     <label for="recepiesDescription">How to prepare:</label>
     <br>
-    <textarea id="recepiesDescription" bind:value={recepiesDescription}></textarea>
+    <textarea id="recepiesDescription" bind:value={recepiesDescription}></textarea><br><br>
+    
+    <label for="recepiesPreparationTime">Preparation Time</label>
+    <br>
+    <input type="number" id="recepiesPreparationTime" bind:value={recepiesPreparationTime}> <p>seconds</p> <br><br>
 
     <div class="ingredientesSelector">
         
@@ -46,7 +51,7 @@ let recepiesDescription;
             <p>Please select at least 2 ingredientes</p>
         {:else}
             <p>You have chosen {recepiesIngredientes}</p>
-            <AddNewRecepie nameToFetch={recepiesName} ingredientesToFetch={recepiesIngredientes} descriptionToFetch={recepiesDescription}/>
+            <AddNewRecepie nameToFetch={recepiesName} ingredientesToFetch={recepiesIngredientes} descriptionToFetch={recepiesDescription} preparationTimeToFetch={recepiesPreparationTime}/>
         {/if}
         
     </div>
@@ -65,7 +70,7 @@ let recepiesDescription;
       font-weight: bold;
     }
   
-    input[type="text"] {
+    input[type="text"], input[type="number"] {
       width: 25%;
       padding: 10px;
       border: 1px solid #ccc;

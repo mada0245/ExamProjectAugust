@@ -9,7 +9,7 @@ const router = express.Router();
 
   router.post('/recepies', auth, async (req, res) => {
 
-    if (!req.body.name || !req.body.ingredientes || !Array.isArray(req.body.ingredientes) || !req.body.description ||Object.keys(req.body).length > 3) {
+    if (!req.body.name || !req.body.ingredientes || !Array.isArray(req.body.ingredientes) || !req.body.description || !req.body.preparationTime || Object.keys(req.body).length > 4) {
       res.status(400).send('Invalid input');
 
     } else {
@@ -26,7 +26,8 @@ const router = express.Router();
         const newRecepie = {
           name: req.body.name,
           ingredients: req.body.ingredientes,
-          description: req.body.description
+          description: req.body.description,
+          preparationTime: req.body.preparationTime
         };
         await collection.insertOne(newRecepie);
         res.send('A new recepie has been created');
