@@ -15,14 +15,23 @@
   });
 
   async function addRecepie() {
-    if (nameToFetch && ingredientesToFetch && descriptionToFetch && preparationTimeToFetch) {
-      if(typeof preparationTimeToFetch === "number"){
+    if (
+      nameToFetch &&
+      ingredientesToFetch &&
+      descriptionToFetch &&
+      preparationTimeToFetch
+    ) {
+      if (
+        typeof preparationTimeToFetch === "number" &&
+        preparationTimeToFetch > 0 &&
+        preparationTimeToFetch % 1 === 0
+      ) {
         const registerURL = `${$BASE_URL}/recepies`;
         const data = {
           name: nameToFetch,
           ingredientes: ingredientesToFetch,
           description: descriptionToFetch,
-          preparationTime: preparationTimeToFetch
+          preparationTime: preparationTimeToFetch,
         };
 
         const response = await fetch(registerURL, {
@@ -35,13 +44,16 @@
         });
 
         if (response.ok) {
-          toastr.success(await response.text(),"✅Success✅");
+          toastr.success(await response.text(), "✅Success✅");
           navigate("/main");
         } else {
           toastr.error(await response.text(), "❌ Error ❌");
         }
-      }else{
-        toastr.error("The preparation time has to be a number", "❌ Error ❌");
+      } else {
+        toastr.error(
+          "The preparation time has to be an integer larger than 0",
+          "❌ Error ❌"
+        );
       }
     } else {
       toastr.error("Please complete everything", "❌ Error ❌");
