@@ -1,13 +1,13 @@
 <script>
   import { Router, Link, Route } from "svelte-navigator";
 
-  import LoginPage from "./pageComponents/login.svelte";
-  import MainPage from "./pageComponents/main.svelte";
-  import ForgotPasswordPage from "./pageComponents/forgotPassword.svelte";
-  import RecepiesListPage from "./pageComponents/recepiesList.svelte";
-  import CreateRecepiePage from "./pageComponents/createRecepie.svelte";
-  import TodayMealPage from "./pageComponents/todayMeal.svelte";
-  import DeleteRecepiePage from "./pageComponents/deleteRecepie.svelte";
+  import Login from "./pageComponents/login.svelte";
+  import Main from "./pageComponents/main.svelte";
+  import ForgotPassword from "./pageComponents/forgotPassword.svelte";
+  import RecepiesList from "./pageComponents/recepiesList.svelte";
+  import CreateRecepie from "./pageComponents/createRecepie.svelte";
+  import TodayMeal from "./pageComponents/todayMeal.svelte";
+  import DeleteRecepie from "./pageComponents/deleteRecepie.svelte";
 
   let isDarkMode = false;
 
@@ -23,7 +23,7 @@
   >
 
   <Route path="/">
-    <LoginPage />
+    <Login />
     <Link to="/forgotPassword">Forgot password</Link>
   </Route>
 
@@ -31,14 +31,14 @@
     <nav class="navBar">
       <Link to="/">Back</Link>
     </nav>
-    <ForgotPasswordPage />
+    <ForgotPassword />
   </Route>
 
   <Route path="/main">
     <nav class="navBar">
       <Link to="/">Log out</Link>
     </nav>
-    <MainPage />
+    <Main />
   </Route>
 
   <Route path="/recepiesList">
@@ -46,7 +46,7 @@
       <Link to="/main">Back</Link>
       <Link to="/">Log out</Link>
     </nav>
-    <RecepiesListPage />
+    <RecepiesList />
   </Route>
 
   <Route path="/createRecepie">
@@ -54,7 +54,7 @@
       <Link to="/main">Back</Link>
       <Link to="/">Log out</Link>
     </nav>
-    <CreateRecepiePage />
+    <CreateRecepie />
   </Route>
 
   <Route path="/todayMeal">
@@ -62,7 +62,7 @@
       <Link to="/main">Back</Link>
       <Link to="/">Log out</Link>
     </nav>
-    <TodayMealPage />
+    <TodayMeal />
   </Route>
 
   <Route path="/deleteRecepie">
@@ -70,7 +70,7 @@
       <Link to="/main">Back</Link>
       <Link to="/">Log out</Link>
     </nav>
-    <DeleteRecepiePage />
+    <DeleteRecepie />
   </Route>
 </Router>
 

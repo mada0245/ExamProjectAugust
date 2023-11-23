@@ -30,7 +30,15 @@ import { Server } from "socket.io";
 
   });
 
+if(!process.env.ADMIN_EMAIL){
+  console.log('ADMIN_EMAIL is not defined.');
+  process.exit(1);
+}
 
+if(!process.env.MADA_EMAIL){
+  console.log('MADA_EMAIL is not defined.');
+  process.exit(1);
+}
 
 if(!process.env.MADA0245_JWT_PASS){
   console.log('MADA0245_JWT_PASS is not defined.');

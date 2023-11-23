@@ -10,9 +10,9 @@
 
     for (let i = 0; i < span.length; i++) {
       const h3 = span[i].querySelector("h3");
-      const txtValue = h3.textContent || h3.innerText;
+      const textValue = h3.textContent || h3.innerText;
 
-      if (txtValue.toUpperCase().indexOf(filter.toUpperCase()) > -1) {
+      if (textValue.toUpperCase().indexOf(filter.toUpperCase()) > -1) {
         span[i].style.display = "";
       } else {
         span[i].style.display = "none";

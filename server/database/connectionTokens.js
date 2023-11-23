@@ -1,12 +1,12 @@
 import { MongoClient } from 'mongodb';
 
 const url = 'mongodb://0.0.0.0:27017';
-const tokenClient = new MongoClient(url);
+const client = new MongoClient(url);
 
 export async function connect() {
   try {
-    await tokenClient.connect();
-    return tokenClient.db('TokenDB');
+    await client.connect();
+    return client.db('TokenDB');
 
 
   } catch (error) {
@@ -19,5 +19,5 @@ export async function connect() {
 
 
 export function close() {
-  return tokenClient.close();
+  return client.close();
 }

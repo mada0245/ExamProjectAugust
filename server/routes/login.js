@@ -26,7 +26,7 @@ const router = express.Router();
         
             const theAdmin = {
               name: "admin",
-              email: "admin@example.com",
+              email: process.env.ADMIN_EMAIL,
               type: "ADMIN",
               password: hashedPassword
             };
@@ -41,7 +41,7 @@ const router = express.Router();
             
             const theMada = {
               name: "mada",
-              email: "mada0245@stud.kea.dk",
+              email: process.env.MADA_EMAIL,
               type: "MADA",
               password: hashedPassword
             };

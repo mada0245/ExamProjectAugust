@@ -12,7 +12,7 @@
 
       const data = { email: inputEmail };
 
-      const res = await fetch(url, {
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -20,12 +20,15 @@
         body: JSON.stringify(data),
       });
 
-      if (res.ok) {
-        toastr.success(`An email has been sent to ${inputEmail}`,"✅Success✅");
+      if (response.ok) {
+        toastr.success(
+          `An email has been sent to ${inputEmail}`,
+          "✅Success✅"
+        );
         navigate("/");
       } else {
-        console.error("Error:", res.status, res.statusText);
-        const result = await res.text();
+        console.error("Error:", response.status, response.statusText);
+        const result = await response.text();
         toastr.error(result, "❌ Error ❌");
       }
     } else {
