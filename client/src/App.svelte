@@ -15,13 +15,12 @@
     isDarkMode = !isDarkMode;
     document.body.classList.toggle("dark-mode", isDarkMode);
   }
-
-
 </script>
 
 <Router>
-
-  <button class="darkMode" on:click={changeDarkMode}>{isDarkMode ? "Light" : "Dark"}</button>
+  <button class="darkModeButton" on:click={changeDarkMode}
+    >{isDarkMode ? "Light" : "Dark"}</button
+  >
 
   <Route path="/">
     <LoginPage />
@@ -73,11 +72,9 @@
     </nav>
     <DeleteRecepiePage />
   </Route>
-
 </Router>
 
 <style>
-
   .navBar {
     display: flex;
     justify-content: space-between;
@@ -88,7 +85,7 @@
     width: 90%;
   }
 
-  .darkMode {
+  .darkModeButton {
     position: absolute;
     right: 2%;
     width: 5%;
@@ -97,8 +94,7 @@
     text-decoration: inherit;
   }
 
-  .darkMode:hover {
+  .darkModeButton:hover {
     color: #535bf2;
   }
-
 </style>
