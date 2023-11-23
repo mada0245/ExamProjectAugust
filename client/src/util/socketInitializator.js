@@ -1,10 +1,11 @@
 import io from "socket.io-client";
+import toastr from "toastr";
 
 const socket = io("localhost:8000");
 
 socket.on("Answer", (data) => {
       
-    alert("The server says: " + data)
+    toastr.success("The server says: " + data,"✅Success✅");
 
 });
 

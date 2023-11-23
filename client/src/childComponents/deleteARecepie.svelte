@@ -1,6 +1,7 @@
 <script>
   import { BASE_URL, token } from "../stores/globalStores";
   import { navigate } from "svelte-navigator";
+  import toastr from "toastr";
 
   export let recepieToDelete;
 
@@ -23,13 +24,13 @@
       });
 
       if (response2.ok) {
-        alert(await response2.text());
-        navigate("/mainPage");
+        toastr.success(await response2.text(),"✅Success✅");
+        navigate("/main");
       } else {
-        alert(await response2.text());
+        toastr.error(await response2.text(), "❌ Error ❌");
       }
     } else {
-      alert("Please select a recepie");
+      toastr.error("Please select a recepie", "❌ Error ❌");
     }
   }
 </script>

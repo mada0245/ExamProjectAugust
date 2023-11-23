@@ -1,6 +1,7 @@
 <script>
   import { navigate } from "svelte-navigator";
   import { BASE_URL, isLoggedIn } from "../stores/globalStores";
+  import toastr from "toastr";
 
   let username;
   let inputPassword;
@@ -24,10 +25,10 @@
         saveToken(result);
       } else {
         console.error("Error:", response.status, response.statusText);
-        alert("Wrong Credetials");
+        toastr.error("Wrong Credetials", "❌ Error ❌");
       }
     } else {
-      alert("Please insert your credetials");
+      toastr.error("Please insert your credetials", "❌ Error ❌");
     }
   }
 
@@ -46,10 +47,10 @@
 
     if (response.ok) {
       isLoggedIn.set(true);
-      navigate("/mainPage");
+      navigate("/main");
     } else {
       console.error("Error:", response.status, response.statusText);
-      alert("Failed to send token");
+      toastr.error("Failed to send token", "❌ Error ❌");
     }
   }
 </script>

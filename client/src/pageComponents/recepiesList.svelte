@@ -1,8 +1,8 @@
 <script>
   import { onMount } from "svelte";
   import { BASE_URL } from "../stores/globalStores";
-  import ShowRecepies from "../components/showRecepies.svelte";
-  import CheckLogIn from "../components/checkLogIn.svelte";
+  import ShowRecepies from "../childComponents/showRecepies.svelte";
+  import CheckLogIn from "../childComponents/checkLogIn.svelte";
 
   let list = [];
 

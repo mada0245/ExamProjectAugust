@@ -1,67 +1,74 @@
 <script>
   import { Router, Link, Route } from "svelte-navigator";
 
-  import LoginPage from "./pages/login.svelte";
-  import MainPage from "./pages/main.svelte";
-  import ForgotPasswordPage from "./pages/forgotPassword.svelte";
-  import RecepiesListPage from "./pages/recepiesList.svelte";
-  import CreateRecepiePage from "./pages/createRecepie.svelte";
-  import TodayMealPage from "./pages/todayMeal.svelte";
-  import DeleteRecepiePage from "./pages/deleteRecepie.svelte";
+  import LoginPage from "./pageComponents/login.svelte";
+  import MainPage from "./pageComponents/main.svelte";
+  import ForgotPasswordPage from "./pageComponents/forgotPassword.svelte";
+  import RecepiesListPage from "./pageComponents/recepiesList.svelte";
+  import CreateRecepiePage from "./pageComponents/createRecepie.svelte";
+  import TodayMealPage from "./pageComponents/todayMeal.svelte";
+  import DeleteRecepiePage from "./pageComponents/deleteRecepie.svelte";
+
+  let isDarkMode = false;
+
+  function changeDarkMode() {
+    isDarkMode = !isDarkMode;
+    document.body.classList.toggle("dark-mode", isDarkMode);
+  }
+
 
 </script>
 
-
-
 <Router>
+
+  <button class="darkMode" on:click={changeDarkMode}>{isDarkMode ? "Light" : "Dark"}</button>
 
   <Route path="/">
     <LoginPage />
-    <Link to="/forgotPasswordPage">Forgot password</Link>
+    <Link to="/forgotPassword">Forgot password</Link>
   </Route>
 
-  <Route path="/forgotPasswordPage">
+  <Route path="/forgotPassword">
     <nav class="navBar">
       <Link to="/">Back</Link>
     </nav>
     <ForgotPasswordPage />
   </Route>
 
-  <Route path="/mainPage">
+  <Route path="/main">
     <nav class="navBar">
       <Link to="/">Log out</Link>
     </nav>
-    
     <MainPage />
   </Route>
 
-  <Route path="/mainPage/recepiesListPage">
+  <Route path="/recepiesList">
     <nav class="navBar">
-      <Link to="/mainPage">Back</Link>
+      <Link to="/main">Back</Link>
       <Link to="/">Log out</Link>
     </nav>
     <RecepiesListPage />
   </Route>
 
-  <Route path="/mainPage/createRecepiePage">
+  <Route path="/createRecepie">
     <nav class="navBar">
-      <Link to="/mainPage">Back</Link>
+      <Link to="/main">Back</Link>
       <Link to="/">Log out</Link>
     </nav>
     <CreateRecepiePage />
   </Route>
 
-  <Route path="/mainPage/todayMealPage">
+  <Route path="/todayMeal">
     <nav class="navBar">
-      <Link to="/mainPage">Back</Link>
+      <Link to="/main">Back</Link>
       <Link to="/">Log out</Link>
     </nav>
     <TodayMealPage />
   </Route>
 
-  <Route path="/mainPage/deleteRecepiePage">
+  <Route path="/deleteRecepie">
     <nav class="navBar">
-      <Link to="/mainPage">Back</Link>
+      <Link to="/main">Back</Link>
       <Link to="/">Log out</Link>
     </nav>
     <DeleteRecepiePage />
@@ -78,6 +85,20 @@
     background-color: #f0f0f0;
     padding: 10px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 90%;
   }
-  
+
+  .darkMode {
+    position: absolute;
+    right: 2%;
+    width: 5%;
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+  }
+
+  .darkMode:hover {
+    color: #535bf2;
+  }
+
 </style>
