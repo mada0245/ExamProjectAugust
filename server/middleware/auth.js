@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-import config from 'config';
 
 function auth(req, res, next) {
 
@@ -10,7 +9,7 @@ function auth(req, res, next) {
 
 
     try{
-        const decoded = jwt.verify(token, config.get('jwtPrivateKey'));
+        const decoded = jwt.verify(token, process.env.MADA0245_JWT_PASS);
         if (decoded == "ADMIN"){
             next();
 

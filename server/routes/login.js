@@ -1,4 +1,3 @@
-import config from 'config';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { connect, close } from '../database/connection.js';
@@ -62,7 +61,7 @@ const router = express.Router();
               return res.status(400).send('Wrong credentials');
           }
 
-          const token = jwt.sign(user.type, config.get('jwtPrivateKey'));
+          const token = jwt.sign(user.type, process.env.MADA0245_JWT_PASS);
           res.send(token);
 
 

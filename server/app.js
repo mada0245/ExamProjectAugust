@@ -32,33 +32,30 @@ import { Server } from "socket.io";
 
 
 
-
-import config from 'config';
-
-  if(!config.get('jwtPrivateKey')){
-    console.log('mada0245_jwtPrivateKey is not defined.');
-    process.exit(1);
-  }
-
-  if(!process.env.NODEMAILER_USERNAME){
-    console.log('NODEMAILER_USERNAME is not defined.');
-    process.exit(1);
-  }
-
-  if(!process.env.NODEMAILER_PASSWORD){
-    console.log('NODEMAILER_PASSWORD is not defined.');
-    process.exit(1);
-  }
-
-  if(!process.env.MADA0245_ADMIN_PASS){
-  console.log('MADA0245_ADMIN_PASS is not defined.');
+if(!process.env.MADA0245_JWT_PASS){
+  console.log('MADA0245_JWT_PASS is not defined.');
   process.exit(1);
-  }
+}
 
-  if(!process.env.MADA0245_MADA_PASS){
-  console.log('MADA0245_MADA_PASS is not defined.');
+if(!process.env.NODEMAILER_USERNAME){
+  console.log('NODEMAILER_USERNAME is not defined.');
   process.exit(1);
-  }
+}
+
+if(!process.env.NODEMAILER_PASSWORD){
+  console.log('NODEMAILER_PASSWORD is not defined.');
+  process.exit(1);
+}
+
+if(!process.env.MADA0245_ADMIN_PASS){
+console.log('MADA0245_ADMIN_PASS is not defined.');
+process.exit(1);
+}
+
+if(!process.env.MADA0245_MADA_PASS){
+console.log('MADA0245_MADA_PASS is not defined.');
+process.exit(1);
+}
 
 import token from './routes/tokens.js';
   app.use(token);
